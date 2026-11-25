@@ -24,9 +24,22 @@ button{font:inherit}
 }
 .brand{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--green-dark)}
 .brand-mark{width:38px;height:38px;border-radius:12px;background:var(--green-light);display:grid;place-items:center;font-size:22px}
+.nav-group{display:flex;align-items:center;gap:clamp(14px,2.5vw,28px)}
 .site-nav{display:flex;align-items:center;gap:clamp(14px,2.5vw,28px);flex-wrap:wrap}
 .site-nav a{color:var(--green-dark);text-decoration:none;font-size:14px;font-weight:750}
 .site-nav a:hover{color:var(--green);text-decoration:underline}
+
+/* BOTÓN DE AUDIO SOLO VOLUMEN / SILENCIAR */
+.audio-btn{
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid var(--line);background:var(--green-light);
+  color:var(--green-dark);display:grid;place-items:center;
+  cursor:pointer;font-size:18px;transition:all .18s ease;
+  flex-shrink:0;
+}
+.audio-btn:hover{background:#dcefdc;border-color:var(--green)}
+.audio-btn.muted{background:#f3f5f3;color:#7b8a80}
+
 .deck{display:block;width:min(1160px,92vw);margin:0 auto;padding:34px 0 70px}
 .slide{
   display:block;width:100%;height:auto;min-height:0;margin:0 0 28px;
@@ -158,6 +171,7 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
 }
 @media(max-width:760px){
   .topbar{position:relative;align-items:flex-start;gap:12px;flex-direction:column}
+  .nav-group{width:100%;justify-content:space-between}
   .site-nav{gap:16px;flex-wrap:wrap}
   .deck{width:94vw;padding:18px 0 42px}
   .slide{min-height:0;margin-bottom:18px}
@@ -185,15 +199,20 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
     <span class="brand-mark">🌿</span>
     <span>QUÍMICA DE LOS ALIMENTOS</span>
   </div>
-  <nav class="site-nav">
-    <a href="#inicio">Inicio</a>
-    <a href="#introduccion">Contenido</a>
-    <a href="#reaccion">Reacción</a>
-    <a href="#repaso">Repaso</a>
-    <a href="#creditos">Créditos</a>
-    <a href="#bibliografia">Bibliografía</a>
-  </nav>
+  <div class="nav-group">
+    <nav class="site-nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#introduccion">Contenido</a>
+      <a href="#reaccion">Reacción</a>
+      <a href="#repaso">Repaso</a>
+      <a href="#creditos">Créditos</a>
+      <a href="#bibliografia">Bibliografía</a>
+    </nav>
+    <button id="audio-toggle" class="audio-btn" type="button" aria-label="Silenciar o activar música">🔊</button>
+  </div>
 </header>
+
+<audio id="bg-music" src="https://github.com/MIGUELM-ULP/nyeleni-ULP/raw/refs/heads/main/chill.mp3.mp3" loop preload="auto"></audio>
 
 <main class="deck">
 
@@ -366,7 +385,7 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
     <div class="slide-inner">
       <p class="eyebrow">08 · Mecanismo y reacción química</p>
       <h2>Proceso de formación de la feofitina (Feofitinización)</h2>
-      <p>El calor rompe las membranas celulares y libera ácidos orgánicos (como el ácido málico, cítrico u oxálico). Los protones ($\text{H}^+$) desplazan al ion magnesio ($\text{Mg}^{2+}$) coordinado en el centro del anillo tetrapirrólico.</p>
+      <p>El calor rompe las membranas celulares y libera ácidos orgánicos (como el ácido málico, cítrico u oxálico). Los protones (H⁺) desplazan al ion magnesio (Mg²⁺) coordinado en el centro del anillo tetrapirrólico.</p>
       
       <div class="reaction-board">
         <div class="reaction">
@@ -693,6 +712,42 @@ document.querySelectorAll('.quiz-card').forEach(card => {
       feedback.classList.add('show');
     });
   });
+});
+
+const music = document.getElementById('bg-music');
+const audioBtn = document.getElementById('audio-toggle');
+let userMuted = false;
+
+function updateAudioIcon() {
+  if (music.muted) {
+    audioBtn.textContent = '🔇';
+    audioBtn.classList.add('muted');
+  } else {
+    audioBtn.textContent = '🔊';
+    audioBtn.classList.remove('muted');
+  }
+}
+
+function tryStartMusic() {
+  if (music.paused && !userMuted) {
+    music.play().catch(() => {});
+  }
+}
+
+window.addEventListener('load', tryStartMusic);
+document.addEventListener('click', tryStartMusic, { once: true });
+
+audioBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (music.paused) {
+    music.muted = false;
+    userMuted = false;
+    music.play().catch(() => {});
+  } else {
+    music.muted = !music.muted;
+    userMuted = music.muted;
+  }
+  updateAudioIcon();
 });
 </script>
 
