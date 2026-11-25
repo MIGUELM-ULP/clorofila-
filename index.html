@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,7 +24,7 @@ button{font:inherit}
 }
 .brand{display:flex;align-items:center;gap:11px;font-weight:800;color:var(--green-dark)}
 .brand-mark{width:38px;height:38px;border-radius:12px;background:var(--green-light);display:grid;place-items:center;font-size:22px}
-.site-nav{display:flex;align-items:center;gap:clamp(14px,3vw,34px)}
+.site-nav{display:flex;align-items:center;gap:clamp(14px,2.5vw,28px);flex-wrap:wrap}
 .site-nav a{color:var(--green-dark);text-decoration:none;font-size:14px;font-weight:750}
 .site-nav a:hover{color:var(--green);text-decoration:underline}
 .deck{display:block;width:min(1160px,92vw);margin:0 auto;padding:34px 0 70px}
@@ -46,16 +45,18 @@ ul{padding-left:21px;margin:8px 0}
 li{font-size:clamp(15px,1.25vw,17px);line-height:1.55;margin:8px 0;color:#405448}
 strong{color:var(--green-dark)}
 .hero{
-  min-height:520px;
+  min-height:540px;
   display:flex;align-items:center;
   background:linear-gradient(90deg,#123c2de8 0%,#1d5138b8 58%,#1d513840 100%),url('https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1800&q=88') center/cover;
   color:white;
 }
-.hero .slide-inner{max-width:800px}
+.hero .slide-inner{max-width:840px}
 .hero .eyebrow{color:#d8f0d9}
 .hero p{color:#eff8ef}
 .hero-pill{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border:1px solid #ffffff70;border-radius:99px;color:#f1fff1;background:#ffffff17;font-size:12px;font-weight:800;letter-spacing:1.2px;margin-bottom:24px}
-.hero-foot{margin-top:30px;color:#e3f2e3;font-size:13px;letter-spacing:.5px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero-badge{padding:8px 14px;border-radius:10px;background:#ffffff1c;border:1px solid #ffffff45;color:#f2fbf2;font-size:12px;font-weight:750;letter-spacing:.4px}
+.hero-foot{margin-top:18px;color:#e3f2e3;font-size:13px;letter-spacing:.5px}
 .split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(22px,4vw,52px);align-items:center}
 .photo{width:100%;height:100%;min-height:270px;max-height:420px;object-fit:cover;border-radius:19px;box-shadow:0 12px 28px #183d281c}
 .photo-frame{background:var(--green-light);padding:10px;border-radius:22px}
@@ -76,16 +77,37 @@ strong{color:var(--green-dark)}
 .dark .info-card{background:#ffffff12;border-color:#ffffff30}
 .dark .info-card h3{color:#e5f5e6}
 .dark .info-card p{color:#eaf4ea}
-.reaction{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin:20px 0}
-.molecule{padding:25px 15px;border-radius:18px;text-align:center;background:#e5f4e5;border:1px solid #cfe5d0}
-.molecule h3{font-size:clamp(17px,2vw,23px);margin-bottom:8px}
-.molecule .symbol{font-size:clamp(27px,3vw,39px);font-weight:900;color:#286440}
-.molecule small{font-size:12px;color:#526b57}
-.molecule.pheo{background:#f0eadb;border-color:#e1d4b8}
-.molecule.pheo h3,.molecule.pheo .symbol{color:#79613a}
-.arrow{text-align:center;color:var(--green);font-size:27px;font-weight:900}
-.arrow small{display:block;font-size:11px;line-height:1.4;color:#647568;max-width:120px}
-.formula{text-align:center;background:#f7faf5;border:1px dashed #a9c7aa;border-radius:13px;padding:13px;font-weight:800;color:var(--green-dark);font-size:clamp(15px,1.7vw,20px)}
+
+/* ESQUEMA DE REACCIÓN QUÍMICA MEJORADO */
+.reaction-board{background:var(--mint);border:1px solid var(--line);border-radius:20px;padding:24px;margin:20px 0}
+.reaction{display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:stretch}
+.molecule{padding:22px 18px;border-radius:18px;text-align:center;background:#e4f4e5;border:2px solid #9cc8a1;display:flex;flex-direction:column;justify-content:space-between}
+.molecule-badge{display:inline-block;margin:0 auto 10px;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:800;letter-spacing:.6px;background:#286440;color:#fff}
+.molecule h3{font-size:clamp(18px,2.1vw,24px);margin-bottom:6px;color:#1d4e31}
+.porphyrin-ring{
+  width:118px;height:118px;margin:10px auto;border-radius:22px;
+  border:3px dashed #2f704b;background:#fff;
+  display:grid;grid-template-rows:1fr auto 1fr;align-items:center;justify-items:center;
+  padding:6px;box-shadow:0 6px 16px #183d2812;
+}
+.ring-row{display:flex;justify-content:space-between;width:82%;font-weight:800;font-size:13px;color:#286440}
+.ring-core{font-size:21px;font-weight:900;color:#1d4e31;background:#d9f0db;padding:4px 10px;border-radius:10px}
+.molecule small{font-size:13px;color:#395541;font-weight:600;display:block;margin-top:8px}
+.molecule.pheo{background:#f3ede0;border-color:#cbb894}
+.molecule.pheo .molecule-badge{background:#79613a}
+.molecule.pheo h3{color:#6a522d}
+.molecule.pheo .porphyrin-ring{border-color:#8a6f43}
+.molecule.pheo .ring-row{color:#79613a}
+.molecule.pheo .ring-core{color:#6a522d;background:#ebe1cc}
+.molecule.pheo small{color:#655336}
+.arrow-box{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px}
+.reagent-pill{background:#fff;border:1px solid #b8d3ba;border-radius:12px;padding:10px 12px;text-align:center;font-size:12px;font-weight:700;color:var(--green-dark);line-height:1.45;box-shadow:0 4px 12px #183d280d}
+.arrow-symbol{color:var(--green);font-size:34px;font-weight:900;line-height:1.1;margin:6px 0}
+.byproduct-pill{background:#eaf4ea;border-radius:99px;padding:5px 11px;font-size:11px;font-weight:800;color:#286440}
+.formula-bar{margin-top:18px;display:grid;grid-template-columns:1.2fr .8fr;gap:12px}
+.formula{text-align:center;background:#fff;border:1.5px solid #a9c7aa;border-radius:13px;padding:14px;font-weight:800;color:var(--green-dark);font-size:clamp(14px,1.5vw,18px);display:flex;align-items:center;justify-content:center}
+.secondary-pathway{background:#f7f3eb;border:1px dashed #c8b693;border-radius:13px;padding:12px 14px;font-size:13px;color:#665335;line-height:1.45}
+
 table{border-collapse:collapse;width:100%;font-size:14px;background:white;border-radius:14px;overflow:hidden;box-shadow:0 5px 18px #183d2810}
 th{background:var(--green);color:white;text-align:left;padding:14px}
 td{padding:13px 14px;border-bottom:1px solid #e5eee5;line-height:1.45}
@@ -93,6 +115,31 @@ tr:nth-child(even) td{background:#f3f8f2}
 .table-wrap{overflow:auto;margin-top:14px}
 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
 .gallery img{width:100%;height:175px;object-fit:cover;border-radius:14px}
+
+/* PREGUNTAS DE REPASO */
+.quiz-grid{display:grid;gap:16px;margin-top:18px}
+.quiz-card{background:var(--mint);border:1px solid var(--line);border-radius:16px;padding:20px}
+.quiz-q{font-weight:800;color:var(--green-dark);font-size:16px;margin-bottom:12px}
+.quiz-options{display:grid;gap:8px}
+.quiz-opt{
+  text-align:left;padding:11px 15px;border-radius:11px;border:1px solid #cde0ce;
+  background:#fff;color:var(--ink);font-size:14px;font-weight:600;cursor:pointer;
+  transition:all .18s ease;
+}
+.quiz-opt:hover{background:#eef7ee;border-color:var(--green)}
+.quiz-opt.correct{background:#dff3e2;border-color:#266b43;color:#16472b}
+.quiz-opt.wrong{background:#fbe9e7;border-color:#c9564c;color:#7e251e}
+.quiz-feedback{margin-top:10px;font-size:13.5px;font-weight:650;line-height:1.5;display:none;padding:10px 13px;border-radius:10px}
+.quiz-feedback.show{display:block;background:#fff;border-left:4px solid var(--green);color:#2c4c37}
+
+/* CRÉDITOS ACADÉMICOS */
+.credits-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+.credit-box{background:var(--mint);border:1px solid var(--line);border-radius:16px;padding:22px}
+.credit-box h3{margin-bottom:12px;font-size:17px}
+.credit-list{list-style:none;padding:0;margin:0}
+.credit-list li{padding:8px 0;border-bottom:1px solid #dfede0;font-weight:650;color:var(--green-dark);font-size:15px}
+.credit-list li:last-child{border-bottom:none}
+
 .conclusion{
   min-height:390px;
   background:linear-gradient(90deg,#143e2de8,#245b3ab5),url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1800&q=85') center/cover;
@@ -104,10 +151,14 @@ tr:nth-child(even) td{background:#f3f8f2}
 .ref{padding:15px 18px;border:1px solid var(--line);border-radius:13px;background:#f8fcf8}
 .ref p{font-size:14px;margin:5px 0}
 .ref a{color:var(--green);font-weight:700;overflow-wrap:anywhere}
-footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font-size:13px}
+footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font-size:13px;line-height:1.6}
+@media(max-width:860px){
+  .credits-grid{grid-template-columns:1fr}
+  .formula-bar{grid-template-columns:1fr}
+}
 @media(max-width:760px){
   .topbar{position:relative;align-items:flex-start;gap:12px;flex-direction:column}
-  .site-nav{gap:20px;flex-wrap:wrap}
+  .site-nav{gap:16px;flex-wrap:wrap}
   .deck{width:94vw;padding:18px 0 42px}
   .slide{min-height:0;margin-bottom:18px}
   .slide-inner{padding:26px 21px}
@@ -117,9 +168,8 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
   .grid-3{grid-template-columns:1fr}
   .grid-2{grid-template-columns:1fr 1fr}
   .gallery img{height:115px}
-  .reaction{gap:7px}
-  .molecule{padding:17px 8px}
-  .arrow small{max-width:75px}
+  .reaction{grid-template-columns:1fr;gap:12px}
+  .arrow-symbol{transform:rotate(90deg)}
 }
 @media(max-width:430px){
   .grid-2{grid-template-columns:1fr}
@@ -138,6 +188,9 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
   <nav class="site-nav">
     <a href="#inicio">Inicio</a>
     <a href="#introduccion">Contenido</a>
+    <a href="#reaccion">Reacción</a>
+    <a href="#repaso">Repaso</a>
+    <a href="#creditos">Créditos</a>
     <a href="#bibliografia">Bibliografía</a>
   </nav>
 </header>
@@ -151,6 +204,10 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
       <p class="eyebrow">Química de los alimentos</p>
       <h1>Clorofilas y cambios de color durante la cocción</h1>
       <p class="lead">Papel del magnesio en la estructura de la clorofila, formación de feofitina y relación entre el cambio de color y la conservación de minerales en las hortalizas.</p>
+      <div class="hero-meta">
+        <span class="hero-badge">🏛️ Universidad Libre · Sede Pereira</span>
+        <span class="hero-badge">📅 Fecha expositoria: 26/11/2026</span>
+      </div>
       <div class="hero-foot">SALVADOR BADUI DERGAL · 4.ª EDICIÓN · ARTÍCULO CIENTÍFICO</div>
     </div>
   </section>
@@ -166,6 +223,7 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
           <li>Durante la cocción, el calor puede modificar la estructura química de estos pigmentos.</li>
           <li>Uno de los cambios más visibles es pasar de verde brillante a verde oliva.</li>
           <li>Esta transformación está relacionada con la formación de feofitina.</li>
+          <li>La percepción visual del color influye directamente en la aceptación sensorial y la calidad percibida del alimento.</li>
         </ul>
         <div class="callout"><p>El color es una característica de calidad que puede cambiar durante el procesamiento de los alimentos.</p></div>
       </div>
@@ -188,8 +246,9 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
             <li>Se encuentran principalmente en los cloroplastos.</li>
             <li>Absorben energía luminosa necesaria para la fotosíntesis.</li>
             <li>Son responsables del color verde de muchas frutas y hortalizas.</li>
+            <li>En los alimentos vegetales predominan la clorofila a y la clorofila b, habitualmente en una proporción aproximada de 3:1.</li>
           </ul>
-          <div class="callout"><p>Clorofila A: tono verde azulado. · Clorofila B: tono verde amarillento.</p></div>
+          <div class="callout"><p>Clorofila a: tono verde azulado. · Clorofila b: tono verde amarillento.</p></div>
         </div>
         <img class="photo" src="https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=1000&q=85" alt="Hojas verdes de espinaca">
       </div>
@@ -204,10 +263,10 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
         <h2>Estructura química de la clorofila</h2>
         <p>La molécula presenta una estructura organizada que determina sus propiedades como pigmento.</p>
         <div class="grid-2">
-          <article class="info-card"><h3>Anillo tetrapirrólico</h3><p>Estructura formada por cuatro anillos con átomos de nitrógeno.</p></article>
+          <article class="info-card"><h3>Anillo tetrapirrólico</h3><p>Estructura formada por cuatro anillos pirrólicos con átomos de nitrógeno.</p></article>
           <article class="info-card"><h3>Magnesio</h3><p>Ion Mg²⁺ ubicado en el centro del anillo.</p></article>
-          <article class="info-card"><h3>Cadena de fitol</h3><p>Cadena larga que contribuye a su carácter liposoluble.</p></article>
-          <article class="info-card"><h3>Absorción de luz</h3><p>La estructura permite absorber determinadas longitudes de onda.</p></article>
+          <article class="info-card"><h3>Cadena de fitol</h3><p>Cadena hidrocarbonada larga que aporta carácter liposoluble.</p></article>
+          <article class="info-card"><h3>Absorción de luz</h3><p>El sistema de dobles enlaces conjugados absorbe luz visible.</p></article>
         </div>
       </div>
       <div class="photo-frame">
@@ -249,6 +308,7 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
         <div>
           <ul>
             <li>El calor modifica los tejidos vegetales y la integridad de sus células.</li>
+            <li>La desnaturalización de proteínas asociadas y el colapso de membranas liberan ácidos celulares.</li>
             <li>Los ácidos orgánicos pueden entrar en contacto con los pigmentos.</li>
             <li>El pH puede disminuir en el entorno de la clorofila.</li>
             <li>Se favorece la transformación de clorofila en feofitina.</li>
@@ -291,6 +351,7 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
           <li>Se favorece en condiciones ácidas y durante el calentamiento.</li>
           <li>Presenta tonalidades verde oliva o verde parduzco.</li>
           <li>Es uno de los principales productos de transformación de la clorofila durante la cocción.</li>
+          <li>Si el calentamiento continúa de forma intensa, puede derivar en compuestos como pirofeofitinas.</li>
         </ul>
       </div>
       <div class="photo-frame">
@@ -300,27 +361,57 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
     </div>
   </section>
 
-  <!-- 8. REACCIÓN -->
-  <section class="slide">
+  <!-- 8. REACCIÓN QUÍMICA MEJORADA -->
+  <section class="slide" id="reaccion">
     <div class="slide-inner">
-      <p class="eyebrow">08 · Reacción química</p>
-      <h2>Proceso de formación de la feofitina</h2>
-      <p>En un medio ácido, los iones hidrógeno sustituyen al magnesio que se encuentra en el centro de la clorofila.</p>
-      <div class="reaction">
-        <div class="molecule">
-          <h3>CLOROFILA</h3>
-          <div class="symbol">Mg²⁺</div>
-          <small>Verde brillante</small>
+      <p class="eyebrow">08 · Mecanismo y reacción química</p>
+      <h2>Proceso de formación de la feofitina (Feofitinización)</h2>
+      <p>El calor rompe las membranas celulares y libera ácidos orgánicos (como el ácido málico, cítrico u oxálico). Los protones ($\text{H}^+$) desplazan al ion magnesio ($\text{Mg}^{2+}$) coordinado en el centro del anillo tetrapirrólico.</p>
+      
+      <div class="reaction-board">
+        <div class="reaction">
+          <div class="molecule">
+            <span class="molecule-badge">PIGMENTO NATIVO</span>
+            <h3>CLOROFILA (a / b)</h3>
+            <div class="porphyrin-ring" title="Anillo de porfirina coordinado con Magnesio">
+              <div class="ring-row"><span>N</span><span>N</span></div>
+              <div class="ring-core">Mg²⁺</div>
+              <div class="ring-row"><span>N</span><span>N</span></div>
+            </div>
+            <small>Complejo organometálico estable<br>Color: <strong>Verde brillante</strong></small>
+          </div>
+
+          <div class="arrow-box">
+            <div class="reagent-pill">
+              🔥 Calor (cocción)<br>
+              🍋 Medio ácido (+ 2H⁺)<br>
+              📉 Descenso del pH
+            </div>
+            <div class="arrow-symbol">➔</div>
+            <span class="byproduct-pill">Libera ion Mg²⁺</span>
+          </div>
+
+          <div class="molecule pheo">
+            <span class="molecule-badge">DERIVADO SIN MAGNESIO</span>
+            <h3>FEOFITINA (a / b)</h3>
+            <div class="porphyrin-ring" title="Anillo de porfirina protonado">
+              <div class="ring-row"><span>N</span><span>NH</span></div>
+              <div class="ring-core">2H⁺</div>
+              <div class="ring-row"><span>HN</span><span>N</span></div>
+            </div>
+            <small>Anillo tetrapirrólico protonado<br>Color: <strong>Verde oliva / parduzco</strong></small>
+          </div>
         </div>
-        <div class="arrow">→<small>Calor<br>+ acidez<br>2H⁺</small></div>
-        <div class="molecule pheo">
-          <h3>FEOFITINA</h3>
-          <div class="symbol">2H⁺</div>
-          <small>Verde oliva</small>
+
+        <div class="formula-bar">
+          <div class="formula">Clorofila–Mg²⁺ + 2H⁺ &nbsp;➔&nbsp; Feofitina–2H⁺ + Mg²⁺</div>
+          <div class="secondary-pathway">
+            <strong>Ruta térmica prolongada:</strong><br>
+            Feofitina + calor intenso ➔ <em>Pirofeofitina</em> (pérdida del grupo carbometoxi en C-13², tono marrón apagado).
+          </div>
         </div>
       </div>
-      <div class="formula">Clorofila + 2H⁺ → Feofitina + Mg²⁺</div>
-      <p class="caption">Esquema simplificado de la sustitución del magnesio por dos protones.</p>
+      <p class="caption">Representación esquemática del núcleo tetrapirrólico (porfirina) antes y después de la sustitución del magnesio central.</p>
     </div>
   </section>
 
@@ -333,10 +424,10 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
         <table>
           <thead><tr><th>Característica</th><th>Clorofila</th><th>Feofitina</th></tr></thead>
           <tbody>
-            <tr><td>Magnesio central</td><td>Presente</td><td>Ausente; sustituido por H⁺</td></tr>
+            <tr><td>Magnesio central</td><td>Presente (ion Mg²⁺ coordinado)</td><td>Ausente; sustituido por 2H⁺</td></tr>
             <tr><td>Color característico</td><td>Verde brillante</td><td>Verde oliva o parduzco</td></tr>
-            <tr><td>Naturaleza</td><td>Pigmento vegetal</td><td>Derivado de la clorofila</td></tr>
-            <tr><td>Formación</td><td>Presente en el vegetal</td><td>Favorecida por calor y acidez</td></tr>
+            <tr><td>Naturaleza</td><td>Pigmento vegetal nativo</td><td>Derivado de degradación</td></tr>
+            <tr><td>Formación</td><td>Presente en el tejido fresco</td><td>Favorecida por calor y acidez</td></tr>
           </tbody>
         </table>
       </div>
@@ -444,20 +535,114 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
     </div>
   </section>
 
-  <!-- 15. BIBLIOGRAFÍA -->
+  <!-- 15. PREGUNTAS DE REPASO -->
+  <section class="slide" id="repaso">
+    <div class="slide-inner">
+      <p class="eyebrow">15 · Autoevaluación</p>
+      <h2>Preguntas de repaso</h2>
+      <p>Selecciona una opción en cada pregunta para verificar tu comprensión sobre la química de las clorofilas.</p>
+      
+      <div class="quiz-grid">
+        <div class="quiz-card" data-answer="1" data-explanation="Correcto: durante la cocción en medio ácido, dos iones hidrógeno (2H⁺) desplazan al magnesio central (Mg²⁺), formando feofitina de color verde oliva.">
+          <div class="quiz-q">1. ¿Qué cambio químico explica el paso del color verde brillante al verde oliva en las hortalizas cocidas?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-idx="0">A) La oxidación de la cadena de fitol por exposición al oxígeno.</button>
+            <button class="quiz-opt" data-idx="1">B) La sustitución del ion Mg²⁺ central por dos iones H⁺ para formar feofitina.</button>
+            <button class="quiz-opt" data-idx="2">C) La destrucción térmica total de los minerales presentes en la hoja.</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-card" data-answer="0" data-explanation="Correcto: el anillo tetrapirrólico (porfirina) coordina al ion magnesio en su centro mediante cuatro átomos de nitrógeno.">
+          <div class="quiz-q">2. ¿Qué elemento metálico se encuentra coordinado en el centro del anillo tetrapirrólico de la clorofila?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-idx="0">A) Magnesio (Mg²⁺)</button>
+            <button class="quiz-opt" data-idx="1">B) Hierro (Fe²⁺)</button>
+            <button class="quiz-opt" data-idx="2">C) Calcio (Ca²⁺)</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-card" data-answer="2" data-explanation="Correcto: los minerales son termoestables y no se destruyen por el calor doméstico; su pérdida ocurre principalmente por lixiviación (disolución) hacia el agua de cocción.">
+          <div class="quiz-q">3. Si una hortaliza pierde su color verde brillante al hervirse, ¿qué ocurre con su contenido mineral?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-idx="0">A) Todos los minerales se destruyen por efecto de la temperatura.</button>
+            <button class="quiz-opt" data-idx="1">B) Desaparece el 100 % del magnesio, hierro y potasio del alimento.</button>
+            <button class="quiz-opt" data-idx="2">C) No se destruyen por el calor, aunque parte puede pasar al agua por lixiviación.</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="quiz-card" data-answer="1" data-explanation="Correcto: la cocción al vapor con tiempos cortos reduce el contacto directo con el agua líquida y limita tanto la lixiviación de minerales como la exposición prolongada a ácidos.">
+          <div class="quiz-q">4. ¿Qué práctica culinaria ayuda a conservar mejor tanto el color verde como los minerales de las hortalizas?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" data-idx="0">A) Hervir en abundante agua con jugo de limón durante 30 minutos.</button>
+            <button class="quiz-opt" data-idx="1">B) Cocinar al vapor durante tiempos cortos y evitar medios ácidos al inicio.</button>
+            <button class="quiz-opt" data-idx="2">C) Trocear muy finamente las hojas y sumergirlas en agua fría prolongadamente.</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16. CRÉDITOS ACADÉMICOS -->
+  <section class="slide" id="creditos">
+    <div class="slide-inner">
+      <p class="eyebrow">16 · Información institucional</p>
+      <h2>Integrantes, Docente y Datos de Exposición</h2>
+      <p>Presentación académica correspondiente a la asignatura de Química de los alimentos.</p>
+      <div class="credits-grid">
+        <article class="credit-box">
+          <h3>Integrantes</h3>
+          <ul class="credit-list">
+            <li>Juan Esteban Bonilla</li>
+            <li>Miguel Angel Moscoso</li>
+          </ul>
+        </article>
+        <article class="credit-box">
+          <h3>Docente</h3>
+          <ul class="credit-list">
+            <li>Andres Felipe Castañeda</li>
+          </ul>
+        </article>
+        <article class="credit-box">
+          <h3>Institución y Fecha</h3>
+          <ul class="credit-list">
+            <li>Universidad Libre · Sede Pereira</li>
+            <li>Fecha expositoria: 26/11/2026</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17. BIBLIOGRAFÍA -->
   <section class="slide" id="bibliografia">
     <div class="slide-inner">
-      <p class="eyebrow">15 · Fuentes de consulta</p>
+      <p class="eyebrow">17 · Fuentes de consulta</p>
       <h2>Bibliografía</h2>
       <div class="refs">
         <article class="ref">
-          <h3>Libro de consulta</h3>
+          <h3>Libro de consulta principal</h3>
           <p>Badui Dergal, S. (2006). <em>Química de los alimentos</em> (4.ª ed.). Pearson Educación. Capítulo sobre pigmentos y clorofilas.</p>
         </article>
         <article class="ref">
           <h3>Artículo científico: clorofilas y cocción</h3>
           <p>Turkmen, N., Poyrazoglu, E. S., Sari, F. y Velioglu, Y. S. (2006). “Effects of cooking methods on chlorophylls, pheophytins and colour of selected green vegetables”. <em>International Journal of Food Science &amp; Technology, 41</em>, 281–288.</p>
           <p><a href="https://onlinelibrary.wiley.com/action/doSearch?AllField=Effects+of+cooking+methods+on+chlorophylls+pheophytins+and+colour+of+selected+green+vegetables" target="_blank" rel="noopener">Consultar artículo / DOI</a></p>
+        </article>
+        <article class="ref">
+          <h3>Química de los alimentos (estructura y pigmentos)</h3>
+          <p>Damodaran, S., Parkin, K. L. y Fennema, O. R. (2008). <em>Fennema’s Food Chemistry</em> (4.ª ed.). CRC Press. Sección de colorantes y pigmentos vegetales.</p>
+        </article>
+        <article class="ref">
+          <h3>Composición y reacciones en alimentos</h3>
+          <p>Belitz, H.-D., Grosch, W. y Schieberle, P. (2009). <em>Food Chemistry</em> (4.ª ed.). Springer. Capítulo sobre colorantes alimentarios y derivados de la clorofila.</p>
+        </article>
+        <article class="ref">
+          <h3>Retención de nutrientes y pigmentos en hortalizas</h3>
+          <p>Miglio, C., Chiavaro, E., Visconti, A., Fogliano, V. y Pellegrini, N. (2008). “Effects of different cooking methods on nutritional and physicochemical characteristics of selected vegetables”. <em>Journal of Agricultural and Food Chemistry, 56</em>(1), 139–147.</p>
         </article>
         <article class="ref">
           <h3>Consulta complementaria</h3>
@@ -473,7 +658,7 @@ footer{text-align:center;padding:28px 15px;background:#19452f;color:#eaf4ea;font
 </main>
 
 <footer>
-  🌿 Química de los alimentos · Clorofilas y cambios de color durante la cocción
+  🌿 Química de los alimentos · Universidad Libre Sede Pereira · 26/11/2026
 </footer>
 
 <script>
@@ -484,6 +669,29 @@ document.querySelectorAll('.site-nav a').forEach(link => {
       event.preventDefault();
       target.scrollIntoView({behavior:'smooth'});
     }
+  });
+});
+
+document.querySelectorAll('.quiz-card').forEach(card => {
+  const correctIdx = card.getAttribute('data-answer');
+  const explanation = card.getAttribute('data-explanation');
+  const feedback = card.querySelector('.quiz-feedback');
+  const buttons = card.querySelectorAll('.quiz-opt');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('correct', 'wrong'));
+      const chosenIdx = btn.getAttribute('data-idx');
+      if (chosenIdx === correctIdx) {
+        btn.classList.add('correct');
+        feedback.textContent = explanation;
+      } else {
+        btn.classList.add('wrong');
+        buttons[Number(correctIdx)].classList.add('correct');
+        feedback.textContent = 'Respuesta incorrecta. ' + explanation;
+      }
+      feedback.classList.add('show');
+    });
   });
 });
 </script>
